@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800');
+
+$navyblue: #080a3c;
+$orange: #ff5135;
+$backgroundgrey: #f9f9f9;
+
 * {
   box-sizing: border-box;
 }
@@ -8,7 +14,118 @@ a {
 }
 
 body {
+  background: $backgroundgrey;
+  color: $navyblue;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
+
+div.App {
+  position: relative;
+  display: grid;
+  grid-template-columns: 12% auto 12% ;
+  grid-template-rows: 200px 30% 260px 10% 150px 100px;
+
+  div.Heading {
+    // font-family: 'Eczar', serif;
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    font-size: 200%;
+    h1 {
+      margin: 0;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+  }
+
+  div.About {
+    align-self: center;
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 700px;
+    grid-column: 2 / 2;
+    grid-row: 3 / 3;
+  }
+
+  div.Works {
+    grid-area: 4 / 2 / 4 / 2;
+    ul {
+      padding: 0;
+      li {
+        position: relative;
+        list-style:none;
+        max-width: 550px;
+        padding: 15px 30px;
+        border-bottom: 1px solid #dee2e8;
+        &::before{
+          position: absolute;
+          top: 23px;
+          left: 10px;
+          color: $orange;
+          content: "•";
+        }
+        h3 {
+          margin: 0;
+          padding: 7px 0 0 0;
+          font-weight: 500;
+        }
+        p {
+          line-height: 1.5;
+          margin: 0;
+          font-size: 15px;
+          padding: 7px 0;
+        }
+        a {
+          position: absolute;
+          top:0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          &:hover {
+          }
+        }
+        svg {
+          position: absolute;
+          right: 0px;
+          top: calc(50% - 12px);
+          fill: $orange;
+        }
+      }
+    }
+  }
+
+  footer {
+    align-self:end;
+    grid-area: 5 / 2 / 5 / 2;
+    display: flex;
+    justify-content: space-between;
+    a {
+      font-weight: 500;
+      position: relative;
+      display: inline-block;
+      padding: 4px 0;
+      z-index: 3;
+      &::before {
+        opacity: 0.9;
+        transition: 0.1s ease;
+        height: 1px;
+        background: $orange;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+      }
+      &:hover {
+        &::before {
+          height: 13px;
+        }
+      }
+    }
+  }
+}
+
+
+// font-family: 'Eczar', serif;
