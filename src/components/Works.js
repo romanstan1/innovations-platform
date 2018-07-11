@@ -19,7 +19,7 @@ const listOfWorks = [
 ]
 
 const Arrow = ({display}) =>
-  <svg style={!display? {display: 'none'}:{}} width="24" height="24" viewBox="0 0 24 24">
+  <svg style={!display? {opacity: 0}:{}} width="24" height="24" viewBox="0 0 24 24">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
   </svg>
@@ -45,7 +45,6 @@ class ListItem extends Component {
   }
 }
 
-
 export default () =>
 <div className='Works'>
   <ul>
@@ -54,22 +53,3 @@ export default () =>
     }
   </ul>
 </div>
-
-// {/* <ListItem></ListItem>
-// <li>
-//   <h3>Performance Ecomm App</h3>
-//   <p>A project to discover and build a performant Ecomm app</p>
-//   <a href=""/>
-// </li>
-//
-// <li>
-//   <h3>Progessive Web App</h3>
-//   <p>The PWA specsavers demo</p>
-//   <a href=""/>
-// </li>
-//
-// <li>
-//   <h3>Skills Network</h3>
-//   <p>A demo visualisation of company personel and skills</p>
-//   <a href=""/> */}
-// </li>
