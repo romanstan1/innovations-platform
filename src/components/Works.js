@@ -49,7 +49,7 @@ export default () =>
 <div className='Works'>
   <ul>
     {
-      listOfWorks.map(item => <ListItem item={item}/>)
+      listOfWorks.map(item => <ListItem key={item.title} item={item}/>)
     }
   </ul>
 </div>

@@ -25,10 +25,9 @@ div.App {
   position: relative;
   display: grid;
   grid-template-columns: 12% auto 12% ;
-  grid-template-rows: 200px 30% 260px 10% 150px 100px;
+  grid-template-rows: 30vh 30% 260px 10% 150px 100px;
 
   div.Heading {
-    // font-family: 'Eczar', serif;
     grid-column: 2 / 2;
     grid-row: 2 / 2;
     font-size: 200%;
@@ -129,5 +128,30 @@ div.App {
   }
 }
 
+::selection {
+  background: $orange;
+  color: white; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $orange;
+  color: white;/* Gecko Browsers */
+}
 
-// font-family: 'Eczar', serif;
+@media only screen and (max-width: 600px) {
+  div.App {
+    grid-template-columns: 8% auto 8% ;
+    grid-template-rows: 25vh 30% 260px 10% 120px 100px;
+    div.Heading {
+      font-size: 5vw ;
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  div.App {
+    grid-template-rows: 20vh 30% 270px 10% 80px 100px;
+    grid-template-columns: 8% auto 8% ;
+    div.Heading {
+      font-size: 22px ;
+    }
+  }
+}
