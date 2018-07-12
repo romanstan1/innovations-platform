@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500');
 
 $navyblue: #080a3c;
 $orange: #ff5135;
@@ -45,6 +45,9 @@ div.App {
     max-width: 700px;
     grid-column: 2 / 2;
     grid-row: 3 / 3;
+    span {
+      color: $orange;
+    }
   }
 
   div.Works {

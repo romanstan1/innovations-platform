@@ -18,6 +18,8 @@
 *.css
 .css
 
+src/firebase-config.js
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

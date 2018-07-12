@@ -25,13 +25,9 @@ const Arrow = ({display}) =>
   </svg>
 
 class ListItem extends Component {
-  state = {
-    hover: false
-  }
-
+  state = { hover: false }
   onMouseOver = () => this.setState({hover: true })
   onMouseLeave = () => this.setState({hover: false })
-
   render() {
     const {item} = this.props
     return (
