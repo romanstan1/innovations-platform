@@ -1,6 +1,6 @@
 {
-  "short_name": "Documentation Platform",
-  "name": "Doc Platform",
+  "short_name": "Unipro P&T",
+  "name": "Unipro Projects & Thinking",
   "icons": [
     {
       "src": "assets/icon512.png",
@@ -12,6 +12,6 @@
   "display": "standalone",
   "theme_color": "#080a3c",
   "background_color": "#ffffff",
-  "description": "Unipro Innovations Platform",
+  "description": "Unipro Projects & Thinking",
   "gcm_sender_id": "103953800507"
 }
