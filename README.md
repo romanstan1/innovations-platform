@@ -1,3 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with CRA.
 
-Simple documentation page to display and give a platform to work, just made with React.
+A simple page to display and give a platform for work and projects, just made with React.
+
+It also is a PWA, so it has pre-caching and offline functionality, add to home screen, and push notifications.
