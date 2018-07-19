@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 
 const listOfWorks = [
   {
@@ -41,11 +42,16 @@ class ListItem extends Component {
   }
 }
 
-export default () =>
+const Works = ({posts}) =>
 <div className='Works'>
   <ul>
     {
-      listOfWorks.map(item => <ListItem key={item.title} item={item}/>)
+      posts.map(item => <ListItem key={item.title} item={item}/>)
     }
   </ul>
 </div>
+
+
+export default connect(state => ({
+  posts: state.data.posts,
+}))(Works)

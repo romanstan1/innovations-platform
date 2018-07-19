@@ -4,17 +4,21 @@ import Home from './pages/Home'
 import Admin from './pages/Admin'
 import config from './firebase-config.js'
 import firebase from 'firebase'
+import {connect} from 'react-redux'
+import {receivePosts} from './store/modules/actions'
 
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 
-messaging.requestPermission()
-  .then(function() { return messaging.getToken() })
-  .then(function(token) {
+// messaging.requestPermission()
+//   .then(function() { return messaging.getToken() })
+//   .then(function(token) {
+//
+//  console.log("Persission granted for messaging. Token: ",token)
 
- console.log("Persission granted for messaging. Token: ",token)
- //
+ var database = firebase.database();
+
  // fetch(`https://serene-ocean-70888.herokuapp.com/registertopic`,
  // {
  //   method: "POST",
@@ -28,9 +32,17 @@ messaging.requestPermission()
  //   console.log("Successfully registered to the specified topic using token:  ",resp)
  // })
  // .catch(function(error) { console.log("Error with registration:  ",error) })
-})
+// })
 
 class App extends Component {
+  componentDidMount() {
+    const db = firebase.database().ref('posts/');
+    db.on('value', snapshot => {
+      const posts =  snapshot.val()
+      this.props.dispatch(receivePosts(posts))
+    });
+  }
+
   render() {
     return (
       <div>
@@ -44,4 +56,5 @@ class App extends Component {
   }
 }
 
-export default App
+
+export default connect()(App)
