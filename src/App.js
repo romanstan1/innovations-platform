@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {Footer, About, Heading, Works} from './components'
+import {Route,Switch} from 'react-router-dom'
+import Home from './pages/Home'
+import Admin from './pages/Admin'
 import config from './firebase-config.js'
 import firebase from 'firebase'
 
@@ -12,31 +14,34 @@ messaging.requestPermission()
   .then(function(token) {
 
  console.log("Persission granted for messaging. Token: ",token)
-
- fetch(`https://serene-ocean-70888.herokuapp.com/registertopic`,
- {
-   method: "POST",
-   mode: 'cors',
-   headers: {
-     'Content-Type': 'application/x-www-form-urlencoded'
-   },
-   body:"token=" + token + "&topic=innovation2" // the topic name is = 'innovation2'
- })
- .then(function(resp) {
-   console.log("Successfully registered to the specified topic using token:  ",resp)
- })
- .catch(function(error) { console.log("Error with registration:  ",error) })
+ //
+ // fetch(`https://serene-ocean-70888.herokuapp.com/registertopic`,
+ // {
+ //   method: "POST",
+ //   mode: 'cors',
+ //   headers: {
+ //     'Content-Type': 'application/x-www-form-urlencoded'
+ //   },
+ //   body:"token=" + token + "&topic=innovation2" // the topic name is = 'innovation2'
+ // })
+ // .then(function(resp) {
+ //   console.log("Successfully registered to the specified topic using token:  ",resp)
+ // })
+ // .catch(function(error) { console.log("Error with registration:  ",error) })
 })
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Heading/>
-        <About/>
-        <Works/>
-        <Footer/>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/admin" component={Admin}/>
+          <Route component={Home}/>
+        </Switch>
       </div>
-    );
+    )
   }
 }
+
+export default App
