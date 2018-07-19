@@ -1,7 +1,21 @@
 @import "src/styles/_variables";
 
 
+div.button {
+  cursor: pointer;
+  padding: 10px 25px;
+  background: $navyblue;
+  color: white;
+  border-radius: 8px;
+  transition: 0.1s ease;
+  &:hover {
+    background: $hoverblue;
+    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
+  }
+}
+
 div.Admin {
+  background: white;
   nav {
     height: 50px;
     display: grid;
@@ -51,19 +65,6 @@ div.Admin {
     }
   }
 
-  div.button {
-    cursor: pointer;
-    padding: 10px 25px;
-    background: $navyblue;
-    color: white;
-    border-radius: 8px;
-    transition: 0.1s ease;
-    &:hover {
-      background: $hoverblue;
-      box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
-    }
-  }
-
   div.NewPost {
     background: white;
     display: flex;
@@ -75,10 +76,17 @@ div.Admin {
   }
 
   div.Posts {
+    margin: 0px 0px;
     ul {
-      padding: 0;
+      margin: 0;
+      margin-top: 10px;
+      padding: 0px 0px 0px 0;
+      background: $backgroundgrey;
+      // border-radius: 50%;
+      // border-top: 1px solid #dee2e8;
       li {
         padding: 0 40px;
+        background: $backgroundgrey;
         display: grid;
         grid-template-columns:150px 3fr 1fr;
         position: relative;
@@ -89,8 +97,8 @@ div.Admin {
         .posts { grid-column: 2; }
         .notifications { grid-column: 3; }
         &.headings {
-          border-bottom: 3px solid #dee2e8;
-          padding-bottom: 10px;
+          border-bottom: 3px solid $darkergrey;
+          padding: 12px 40px;
         }
         h3 {
           margin: 0;
@@ -100,13 +108,13 @@ div.Admin {
         div.post-content {
           padding: 15px 0;
           h3 {
-            padding: 7px 0 0 0;
+            padding: 5px 0;
           }
           p {
             line-height: 1.5;
             margin: 0;
             font-size: 15px;
-            padding: 7px 0;
+            padding: 5px 0;
           }
         }
         div.create-notification {
@@ -122,7 +130,66 @@ div.Admin {
       }
     }
   }
+  footer {
+    div.top {
+      margin-top: 0px;
+      padding: 120px 0;
+      background: $darkergrey;
+    }
+    div.bottom {
+      background: $hoverblue;
+      background: #3a3a4f;
+      height: 60px;
+      opacity: 0.7;
+    }
+  }
+}
+div.new-post-modal {
+  max-width: 600px;
+  width: 80vw;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  padding: 0 25px 30px 25px;
+  div {
+    padding: 20px 0 7px 0;
+    padding-left: 5px;
+  }
+  div.upload-post {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    // flex-direction: column;
+    div {
+      margin-top: 15px;
+      cursor: pointer;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 25px;
+      // background: $orange;
+    }
+  }
+  input {
+    padding: 10px 5px;
+    width: 100%;
+    line-height: 20px;
+    font-size: 16px;
+    text-indent: 5px;
+    outline: none;
+    border-radius: 4px;
+    border: 2px solid $darkergrey;
+    &:focus{
+      border: 2px solid blue;
+    }
+  }
 
+  // min-width: 600px;
+  // min-height: 400px;
+  //
+  // max-width: 800px;
+  // max-height: 500px;
 }
 
 // @media only screen and (max-width: 600px) {

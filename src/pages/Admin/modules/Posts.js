@@ -9,12 +9,11 @@ class ListItem extends Component {
     const {item} = this.props
     return (
       <li>
-
         <h3>{item.date}</h3>
-
         <div className='post-content'>
           <h3>{item.title}</h3>
           <p>{item.description}</p>
+          <p>{item.link}</p>
         </div>
         <div className='create-notification'>
           <div className='button' onClick={this.createNotification}>Create</div>

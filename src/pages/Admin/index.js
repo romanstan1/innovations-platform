@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Nav, Posts, NewPost} from './modules'
+import {Nav, Posts, NewPost, Footer} from './modules'
 import './styles/index.css'
 
 export default class Admin extends Component {
@@ -9,6 +9,7 @@ export default class Admin extends Component {
         <Nav/>
         <NewPost/>
         <Posts/>
+        <Footer/>
       </div>
     );
   }
