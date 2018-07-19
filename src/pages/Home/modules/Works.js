@@ -1,23 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 
-const listOfWorks = [
-  {
-    title: 'Performance Ecomm App',
-    description: 'A project to discover and build a performant ecomm app',
-    link: 'https://medium.com/'
-  },
-  {
-    title: 'Progessive Web App',
-    description: 'The future of web technologies',
-    link: 'https://medium.com/'
-  },
-  {
-    title: 'Skills Network',
-    description: 'A demo visualisation of company personnel and skills',
-    link: 'https://medium.com/'
-  },
-]
+// const listOfWorks = [
+//   {
+//     title: 'Performance Ecomm App',
+//     description: 'A project to discover and build a performant ecomm app',
+//     link: 'https://medium.com/'
+//   },
+//   {
+//     title: 'Progessive Web App',
+//     description: 'The future of web technologies',
+//     link: 'https://medium.com/'
+//   },
+//   {
+//     title: 'Skills Network',
+//     description: 'A demo visualisation of company personnel and skills',
+//     link: 'https://medium.com/'
+//   },
+// ]
 
 const Arrow = ({display}) =>
   <svg style={!display? {opacity: 0}:{}} width="24" height="24" viewBox="0 0 24 24">

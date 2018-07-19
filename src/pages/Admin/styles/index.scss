@@ -1,0 +1,53 @@
+@import "src/styles/_variables";
+
+nav {
+  height: 50px;
+  display: grid;
+  grid-template-columns: 40px 100px 3fr 1fr 40px;
+  background: $navyblue;
+  font-weight: 300;
+  font-size: 15px;
+  span {
+    // justify-self: center;
+    align-self: center;
+    color: $backgroundgrey;
+    &.home {
+      grid-column: 2;
+    }
+    &.title {
+      grid-column: 3;
+    }
+    &.auth {
+      justify-self: end;
+      grid-column: 4;
+    }
+  }
+  ::selection {
+    background: white;
+    color: $orange;
+  }
+  ::-moz-selection {
+    background: none;
+    color: $orange;
+  }
+
+}
+
+// @media only screen and (max-width: 600px) {
+//   div.Home {
+//     grid-template-columns: 8% auto 8% ;
+//     grid-template-rows: 25vh 30% 260px 10% 120px 100px;
+//     div.Heading {
+//       font-size: 5vw ;
+//     }
+//   }
+// }
+// @media only screen and (max-width: 450px) {
+//   div.Home {
+//     grid-template-rows: 20vh 30% 270px 10% 80px 100px;
+//     grid-template-columns: 8% auto 8% ;
+//     div.Heading {
+//       font-size: 22px ;
+//     }
+//   }
+// }
