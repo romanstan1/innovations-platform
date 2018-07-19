@@ -1,34 +1,126 @@
 @import "src/styles/_variables";
 
-nav {
-  height: 50px;
-  display: grid;
-  grid-template-columns: 40px 100px 3fr 1fr 40px;
-  background: $navyblue;
-  font-weight: 300;
-  font-size: 15px;
-  span {
-    // justify-self: center;
-    align-self: center;
-    color: $backgroundgrey;
-    &.home {
-      grid-column: 2;
+
+div.Admin {
+  nav {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 40px 150px 3fr 1fr 40px;
+    background: $navyblue;
+    font-weight: 300;
+    font-size: 15px;
+    span {
+      align-self: center;
+      font-weight: 300;
+      color: $backgroundgrey;
+      &.home {
+        grid-column: 2;
+      }
+      &.title {
+        grid-column: 3;
+      }
+      &.auth {
+        justify-self: end;
+        grid-column: 4;
+      }
     }
-    &.title {
-      grid-column: 3;
+    div.HomeIcon {
+      // background: $hoverblue;
+      display: inline-block;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 7px;
+      &:hover {
+        background: $hoverblue;
+      }
+      svg {
+        fill: white;
+      }
     }
-    &.auth {
-      justify-self: end;
-      grid-column: 4;
+    ::selection {
+      background: white;
+      color: $orange;
+    }
+    ::-moz-selection {
+      background: none;
+      color: $orange;
     }
   }
-  ::selection {
+
+  div.button {
+    cursor: pointer;
+    padding: 10px 25px;
+    background: $navyblue;
+    color: white;
+    border-radius: 8px;
+    transition: 0.1s ease;
+    &:hover {
+      background: $hoverblue;
+      box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
+    }
+  }
+
+  div.NewPost {
     background: white;
-    color: $orange;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 250px;
+    padding: 60px 0 70px 0;
   }
-  ::-moz-selection {
-    background: none;
-    color: $orange;
+
+  div.Posts {
+    ul {
+      padding: 0;
+      li {
+        padding: 0 40px;
+        display: grid;
+        grid-template-columns:150px 3fr 1fr;
+        position: relative;
+        list-style:none;
+        border-bottom: 1px solid #dee2e8;
+
+        .date { grid-column: 1; }
+        .posts { grid-column: 2; }
+        .notifications { grid-column: 3; }
+        &.headings {
+          border-bottom: 3px solid #dee2e8;
+          padding-bottom: 10px;
+        }
+        h3 {
+          margin: 0;
+          padding: 7px 0 0 0;
+          font-weight: 500;
+        }
+        div.post-content {
+          padding: 15px 0;
+          h3 {
+            padding: 7px 0 0 0;
+          }
+          p {
+            line-height: 1.5;
+            margin: 0;
+            font-size: 15px;
+            padding: 7px 0;
+          }
+        }
+        div.create-notification {
+          margin-left: 10px;
+          display: flex;
+          justify-content:flex-start;
+          align-items: center;
+          div {
+            display: inline-block;
+            // width: 100px;
+          }
+        }
+      }
+    }
   }
 
 }

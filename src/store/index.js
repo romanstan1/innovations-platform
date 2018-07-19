@@ -1,12 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
-import createHistory from 'history/createBrowserHistory'
+import {history} from '../index'
 import rootReducer from './modules'
 
-export const history = createHistory()
-
-const enhancers = []
 const logger = store => next => action => {
   let result = next(action)
   // console.log('action.type:', action.type)
@@ -21,12 +18,12 @@ const middleware = [
 ]
 
 const composedEnhancers = compose(
-  applyMiddleware(...middleware),
-  ...enhancers
+  applyMiddleware(...middleware)
 )
 
 const store = createStore(
   rootReducer,
+  // applyMiddleware(...middleware)
   composedEnhancers
 )
 

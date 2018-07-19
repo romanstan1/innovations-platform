@@ -1,9 +1,9 @@
 import About from './About'
 import Heading from './Heading'
-import Works from './Works'
+import Posts from './Posts'
 import Footer from './Footer'
 
 export {About}
 export {Heading}
-export {Works}
+export {Posts}
 export {Footer}

@@ -6,11 +6,12 @@ import store from './store'
 import {Provider} from 'react-redux'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-const history = createBrowserHistory()
+export const history = createBrowserHistory()
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <App dispatch={store.dispatch}/>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'));

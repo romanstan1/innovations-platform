@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Nav} from './modules'
+import {Nav, Posts, NewPost} from './modules'
 import './styles/index.css'
 
 export default class Admin extends Component {
@@ -7,10 +7,8 @@ export default class Admin extends Component {
     return (
       <div className="Admin">
         <Nav/>
-        {/* <Heading/>
-        <About/>
-        <Works/>
-        <Footer/> */}
+        <NewPost/>
+        <Posts/>
       </div>
     );
   }
