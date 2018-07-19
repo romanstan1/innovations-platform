@@ -4,13 +4,20 @@
 div.button {
   cursor: pointer;
   padding: 10px 25px;
-  background: $navyblue;
+  background: $hoverblue;
+  box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
   color: white;
   border-radius: 8px;
-  transition: 0.1s ease;
+  transition: 0.1s ease-in;
+  // margin-bottom: 10px;
+  &.bright {
+    background: $brightblue !important;
+  }
   &:hover {
-    background: $hoverblue;
-    box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
+    transform: translateY(-1px);
+    // background: blue;
+    opacity: 0.9;
+    // box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
   }
 }
 
@@ -55,14 +62,14 @@ div.Admin {
         fill: white;
       }
     }
-    ::selection {
-      background: white;
-      color: $orange;
-    }
-    ::-moz-selection {
-      background: none;
-      color: $orange;
-    }
+  }
+  ::selection {
+    background: $brightblue;
+    color: white;
+  }
+  ::-moz-selection {
+    background:$brightblue;
+    color: white;
   }
 
   div.NewPost {
@@ -104,6 +111,14 @@ div.Admin {
           margin: 0;
           padding: 7px 0 0 0;
           font-weight: 500;
+        }
+        div.date-content {
+          margin-top: 14px;
+          display: flex;
+          justify-content:flex-start;
+          h3 {
+            font-size: 16px;
+          }
         }
         div.post-content {
           padding: 15px 0;
@@ -181,7 +196,7 @@ div.new-post-modal {
     border-radius: 4px;
     border: 2px solid $darkergrey;
     &:focus{
-      border: 2px solid blue;
+      border: 2px solid $brightblue;
     }
   }
 

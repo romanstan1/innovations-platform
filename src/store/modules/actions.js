@@ -3,30 +3,44 @@ import {database, messaging} from '../firebase-init'
 // Action types
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-// export const FETCH_POSTS = 'FETCH_POSTS'
+export const SUCCESSFUL_UPLOAD = 'SUCCESSFUL_UPLOAD'
+export const UNSUCCESSFUL_UPLOAD = 'UNSUCCESSFUL_UPLOAD'
+export const DELETE_POST = 'DELETE_POST'
 
 // Action creators
 
-// export const testAction = (node) => {
-//   return dispatch => dispatch({
-//     type: TEST_ACTION,
-//     payload: node
-//   })
-// }
-//
-// export const receivePosts = (posts) => {
-//   return dispatch => dispatch({
-//     type: RECEIVE_POSTS,
-//     payload: posts
-//   })
-// }
+export const uploadPost = (dispatch, title, description, link) => {
+  const id = database.ref().child('posts').push().key
+  const updates = {};
+  updates['/posts/' + id] = {
+    title, description, link, id,
+    date: new Date().toString().slice(4,15)
+  }
+  database.ref().update(updates, (error) => {
+    if(error) {
+      console.log('UNSUCCESSFUL_UPLOAD', error)
+      dispatch({
+        type: UNSUCCESSFUL_UPLOAD
+      })
+    } else {
+        console.log('SUCCESSFUL_UPLOAD')
+      dispatch({
+        type: SUCCESSFUL_UPLOAD
+      })
+    }
+  })
+}
 
 export const fetchPosts = (dispatch) => {
-  database.ref('posts/').once('value', snapshot => {
+  database.ref('posts/').on('value', snapshot => {
     const posts =  snapshot.val()
+    console.log('posts', posts)
     dispatch({
       type: RECEIVE_POSTS,
-      payload:posts
+      payload: posts? Object.values(posts) : []
     })
   });
+}
+export const deletePost = (dispatch, id) => {
+  database.ref('posts/' + id).remove()
 }
