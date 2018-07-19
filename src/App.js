@@ -5,7 +5,8 @@ import Admin from './pages/Admin'
 import config from './firebase-config.js'
 import firebase from 'firebase'
 import {connect} from 'react-redux'
-import {receivePosts} from './store/modules/actions'
+import {receivePosts} from 'store/modules/actions'
+import 'styles/global.css'
 
 firebase.initializeApp(config);
 

@@ -1,27 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500');
+@import "src/styles/_variables";
 
-$navyblue: #080a3c;
-$orange: #ff5135;
-$backgroundgrey: #f9f9f9;
-
-* {
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-body {
-  background: $backgroundgrey;
-  color: $navyblue;
-  margin: 0;
-  padding: 0;
-  font-family: 'Work Sans', sans-serif;
-}
-
-div.App {
+div.Home {
   position: relative;
   display: grid;
   grid-template-columns: 12% auto 12% ;
@@ -131,17 +110,9 @@ div.App {
   }
 }
 
-::selection {
-  background: $orange;
-  color: white; /* WebKit/Blink Browsers */
-}
-::-moz-selection {
-  background: $orange;
-  color: white;/* Gecko Browsers */
-}
 
 @media only screen and (max-width: 600px) {
-  div.App {
+  div.Home {
     grid-template-columns: 8% auto 8% ;
     grid-template-rows: 25vh 30% 260px 10% 120px 100px;
     div.Heading {
@@ -150,7 +121,7 @@ div.App {
   }
 }
 @media only screen and (max-width: 450px) {
-  div.App {
+  div.Home {
     grid-template-rows: 20vh 30% 270px 10% 80px 100px;
     grid-template-columns: 8% auto 8% ;
     div.Heading {
