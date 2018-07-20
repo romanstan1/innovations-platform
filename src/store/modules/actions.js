@@ -8,6 +8,7 @@ export const SUCCESSFUL_UPLOAD = 'SUCCESSFUL_UPLOAD'
 export const FAILED_UPLOAD = 'FAILED_UPLOAD'
 export const DELETE_POST = 'DELETE_POST'
 export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN'
+export const SUCCESSFUL_LOGOUT = 'SUCCESSFUL_LOGOUT'
 export const FAILED_LOGIN = 'FAILED_LOGIN'
 
 // Action creators
@@ -22,12 +23,10 @@ export const uploadPost = (dispatch, title, description, link) => {
   }
   database.ref().update(updates, (error) => {
     if(error) {
-      console.log('FAILED_UPLOAD', error)
       dispatch({
         type: FAILED_UPLOAD
       })
     } else {
-      console.log('SUCCESSFUL_UPLOAD')
       dispatch({
         type: SUCCESSFUL_UPLOAD
       })
@@ -47,9 +46,11 @@ export const fetchPosts = (dispatch) => {
 
 export const logIn = (dispatch, email, password) => {
   auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() =>
-  auth.signInWithEmailAndPassword(email, password)).catch( error => {
-    console.log("Rrror signing in", error.code, error.message)
-  });
+  auth.signInWithEmailAndPassword(email, password)).catch(error => {
+    dispatch({
+      type: FAILED_LOGIN
+    })
+  })
 
   auth.onAuthStateChanged(user => {
     if (user) {
@@ -65,13 +66,14 @@ export const logIn = (dispatch, email, password) => {
       var uid = user.uid;
       var providerData = user.providerData;
     } else {
-      console.log('User signed out')
+      dispatch({
+        type: SUCCESSFUL_LOGOUT
+      })
     }
   })
 }
 
 export const toggleDisplayPost = (item) => {
-  console.log('item', item)
   database.ref().child('posts/' + item.id).update({
     display: !item.display
   })
@@ -79,4 +81,8 @@ export const toggleDisplayPost = (item) => {
 
 export const deletePost = (dispatch, id) => {
   database.ref('posts/' + id).remove()
+}
+
+export const logOut = () => {
+  auth.signOut()
 }

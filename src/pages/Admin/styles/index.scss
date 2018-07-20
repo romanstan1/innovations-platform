@@ -1,5 +1,17 @@
 @import "src/styles/_variables";
 
+div#simple-menu {
+  transform: translate(-10px, 32px);
+  span {
+    outline: none;
+    li {
+      font-size: 15px;
+      width: 130px;
+      font-family: 'Work Sans', sans-serif;
+      height: 16px;
+    }
+  }
+}
 
 div.button {
   cursor: pointer;
@@ -32,7 +44,7 @@ div.Admin {
   nav {
     height: 50px;
     display: grid;
-    grid-template-columns: 40px 150px 3fr 1fr 40px;
+    grid-template-columns: 40px 150px 3fr 1fr 70px;
     background: $navyblue;
     font-weight: 300;
     font-size: 15px;
@@ -49,6 +61,17 @@ div.Admin {
       &.auth {
         justify-self: end;
         grid-column: 4;
+        height: 36px;
+        margin: 7px;
+        font-family: 'Work Sans', sans-serif;
+        button {
+          height: 36px;
+          min-height: 36px;
+          span {
+            line-height: normal;
+            text-transform: none;
+          }
+        }
       }
     }
     div.HomeIcon {
@@ -270,6 +293,13 @@ div.Login {
   display: flex;
   justify-content: center;
   align-items: center;
+  div.error-message {
+    h3 {
+      color: $orange;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
   div.panel {
     display: inline-flex;
     justify-content: center;

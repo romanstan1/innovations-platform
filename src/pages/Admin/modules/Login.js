@@ -21,9 +21,17 @@ class Login extends Component {
 
   render () {
     const {email, password} = this.state
+    const {error, errorMessage} = this.props
     return (
       <div className='Login'>
         <div className='panel'>
+          {
+            error?
+            <div className='error-message'>
+              <h3> {errorMessage} </h3>
+            </div>
+            : null
+          }
           <form action="">
             <h3>Email</h3>
             <input
@@ -52,4 +60,8 @@ class Login extends Component {
 }
 
 
-export default connect()(Login)
+
+export default connect(state => ({
+  error: state.data.error,
+  errorMessage: state.data.errorMessage
+}))(Login)

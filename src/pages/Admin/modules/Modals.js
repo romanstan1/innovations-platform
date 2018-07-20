@@ -1,6 +1,8 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import {deletePost} from 'store/modules/actions'
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export const DeleteModal = ({focusedPost, closeDelete, handleDelete, deleteOpen}) =>
   <Dialog
@@ -43,12 +45,14 @@ export const NotificationModal = ({focusedPost, closeNotification, sendNotificat
     </div>
   </Dialog>
 
-export const UserModal = ({handleClose, open}) =>
-  <Dialog
+export const UserModal = ({handleClose, open, anchorEl, handleLogOut}) =>
+  <Menu
+    id="simple-menu"
     open={open}
     onClose={handleClose}
+    anchorEl={anchorEl}
     >
-    <div className='user-modal'>
-      User Modal
-    </div>
-  </Dialog>
+    <span>
+      <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+    </span>
+  </Menu>
