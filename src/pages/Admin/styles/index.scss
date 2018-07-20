@@ -99,16 +99,19 @@ div.Admin {
         padding: 0 60px 0 40px;
         background: $backgroundgrey;
         display: grid;
-        grid-template-columns:150px 3fr 1fr;
+        grid-template-columns:150px 3fr 120px 1fr;
         position: relative;
         list-style:none;
         border-bottom: 1px solid #dee2e8;
-        .date { grid-column: 1; }
-        .posts { grid-column: 2; }
-        .notifications { grid-column: 3; text-align: right;padding-right: 20px;}
+        .date { grid-column: 1;   text-align: left; }
+        .posts { grid-column: 2;   text-align: left; }
+        .display { grid-column: 3; }
+        .notifications { grid-column: 4;}
         &.headings {
           border-bottom: 3px solid $darkergrey;
-          padding: 12px 40px;
+          padding-bottom: 10px;
+          padding-top: 10px;
+          text-align: center;
         }
         h3 {
           margin: 0;
@@ -157,10 +160,30 @@ div.Admin {
             }
           }
         }
-        div.create-notification {
-          margin-left: 10px;
+        div.switch {
+          // margin-left: 10px;
           display: flex;
-          justify-content:flex-end;
+          justify-content:center;
+          align-items: center;
+          border-left: 1px solid $darkergrey;
+          &.active span{
+            color: $brightblue;
+          }
+          > span {
+            color:white;
+            > span {
+              &:last-of-type {
+                background: $darkergrey !important;
+                opacity: 1  !important;
+              }
+            }
+          }
+        }
+        div.create-notification {
+          // margin-left: 10px;
+          border-left: 1px solid $darkergrey;
+          display: flex;
+          justify-content:center;
           align-items: center;
           div {
             display: inline-block;

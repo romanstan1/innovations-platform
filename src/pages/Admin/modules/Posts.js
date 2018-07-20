@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux'
-import {DeleteModal} from './Modals'
-import {deletePost} from 'store/modules/actions'
+import {DeleteModal, NotificationModal} from './Modals'
+import {deletePost, toggleDisplayPost} from 'store/modules/actions'
+import Switch from '@material-ui/core/Switch';
 
-const ListItem = ({openDelete, item, openNotification}) =>
+const ListItem = ({openDelete, item, openNotification, toggleDisplayPost}) =>
   <li>
     <div className='date-content'>
       <h3>{item.date}</h3>
@@ -16,8 +17,15 @@ const ListItem = ({openDelete, item, openNotification}) =>
         <div className='button' onClick={openDelete(item)}>Delete</div>
       </div>
     </div>
+    <div className={item.display? 'switch active': 'switch'}>
+      <Switch
+        checked={item.display}
+        onChange={toggleDisplayPost(item)}
+        color='disable'
+      />
+    </div>
     <div className='create-notification'>
-      <div className='button' onClick={openNotification}>Create</div>
+      <div className='button' onClick={openNotification(item)}>Create</div>
     </div>
   </li>
 
@@ -29,17 +37,20 @@ class Posts extends Component {
   }
   // notification functions
   sendNotification = () => {
-    console.log('createNotification')
+    console.log('sendNotification')
   }
-  openNotification = () => {
-    console.log('createNotification')
-    this.setState({notificationOpen: true})
+  openNotification = (item) => () => {
+    console.log('open notification')
+    this.setState({
+    notificationOpen: true,
+    focusedPost: item })
   }
   closeNotification = () => this.setState({notificationOpen: false})
 
   // delete functions
   handleDelete = (id) => () => {
     deletePost(this.props.dispatch, id)
+    this.closeDelete()
   }
   openDelete = (item) => () => {
     this.setState({
@@ -49,9 +60,16 @@ class Posts extends Component {
   }
   closeDelete = () => this.setState({deleteOpen: false})
 
+
+  // display post function
+
+  toggleDisplayPost = (item) => () => {
+    toggleDisplayPost(item)
+  }
+
   render() {
   const {posts} = this.props
-  const {deleteOpen,focusedPost} = this.state
+  const {deleteOpen,notificationOpen,focusedPost} = this.state
     return (
       <Fragment>
         <DeleteModal
@@ -59,13 +77,19 @@ class Posts extends Component {
           deleteOpen={deleteOpen}
           closeDelete={this.closeDelete}
           handleDelete={this.handleDelete}
-
+        />
+        <NotificationModal
+          focusedPost={focusedPost}
+          notificationOpen={notificationOpen}
+          closeNotification={this.closeNotification}
+          sendNotification={this.sendNotification}
         />
         <div className='Posts'>
           <ul>
             <li className='headings'>
               <h3 className='date'>Date</h3>
               <h3 className='posts'>Current Posts</h3>
+              <h3 className='display'>Display</h3>
               <h3 className='notifications'>Notifications</h3>
             </li>
             {
@@ -75,6 +99,7 @@ class Posts extends Component {
                   item={item}
                   openNotification={this.openNotification}
                   openDelete={this.openDelete}
+                  toggleDisplayPost={this.toggleDisplayPost}
                 />
               )
             }
