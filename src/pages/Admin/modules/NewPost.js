@@ -3,30 +3,26 @@ import {connect} from 'react-redux'
 import Dialog from '@material-ui/core/Dialog';
 import {uploadPost} from 'store/modules/actions'
 
-const DialogWrapper = ({state, handleClose, handleTextInput, handleUpload}) =>
+const NewPostModal = ({state, handleClose, handleTextInput, handleUpload}) =>
   <Dialog
     open={state.open}
     onClose={handleClose}
-    open={state.open}
     >
-    <div className='new-post-modal'>
-
+    <div className='modal'>
       <div>Title</div>
       <input onChange={handleTextInput} value={state.title} data-type='title' type="text"/>
-
       <div>Description</div>
       <input onChange={handleTextInput} value={state.description} data-type='description' type="text"/>
-
       <div>Link</div>
       <input onChange={handleTextInput} value={state.link} data-type='link' type="text"/>
-
       <div className='upload-post'>
-        <div className='button bright' onClick={handleUpload}>Upload Post</div>
+        <div
+          className={ state.description.length && state.link.length && state.title.length? 
+            'button bright' : 'button error' }
+          onClick={handleUpload}>Upload Post</div>
       </div>
-
     </div>
   </Dialog>
-
 
 class NewPost extends Component {
   state ={
@@ -43,7 +39,6 @@ class NewPost extends Component {
     const {title, description, link} = this.state
     const {dispatch} = this.props
     if(title.length && description.length && link.length) {
-      console.log('upload')
       uploadPost(dispatch, title, description, link)
       this.handleClose()
     }
@@ -51,7 +46,7 @@ class NewPost extends Component {
   render() {
     return (
       <Fragment>
-        <DialogWrapper
+        <NewPostModal
           handleClose={this.handleClose}
           state={this.state}
           handleTextInput={this.handleTextInput}

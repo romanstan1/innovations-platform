@@ -9,15 +9,21 @@ div.button {
   color: white;
   border-radius: 8px;
   transition: 0.1s ease-in;
-  // margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
   &.bright {
     background: $brightblue !important;
   }
+  &.error {
+    background: $darkergrey !important;
+    cursor: not-allowed !important;
+    transform: translateY(0px) !important;
+    opacity: 1 !important;
+  }
   &:hover {
     transform: translateY(-1px);
-    // background: blue;
     opacity: 0.9;
-    // box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
   }
 }
 
@@ -89,20 +95,17 @@ div.Admin {
       margin-top: 10px;
       padding: 0px 0px 0px 0;
       background: $backgroundgrey;
-      // border-radius: 50%;
-      // border-top: 1px solid #dee2e8;
       li {
-        padding: 0 40px;
+        padding: 0 60px 0 40px;
         background: $backgroundgrey;
         display: grid;
         grid-template-columns:150px 3fr 1fr;
         position: relative;
         list-style:none;
         border-bottom: 1px solid #dee2e8;
-
         .date { grid-column: 1; }
         .posts { grid-column: 2; }
-        .notifications { grid-column: 3; }
+        .notifications { grid-column: 3; text-align: right;padding-right: 20px;}
         &.headings {
           border-bottom: 3px solid $darkergrey;
           padding: 12px 40px;
@@ -122,24 +125,47 @@ div.Admin {
         }
         div.post-content {
           padding: 15px 0;
+          display: grid;
+          grid-template-columns:4fr 108px 30px;
+          grid-template-rows:1fr 1fr 1fr;
           h3 {
             padding: 5px 0;
+            grid-column: 1;
+            grid-row: 1;
           }
           p {
             line-height: 1.5;
             margin: 0;
             font-size: 15px;
             padding: 5px 0;
+            &.link {
+              grid-column: 1;
+              grid-row: 3;
+            }
+            &.description {
+              grid-column: 1;
+              grid-row: 2;
+            }
+          }
+          div.delete {
+            grid-column: 2;
+            grid-row: 2;
+            text-align: center;
+            div {
+              background: $darkergrey;
+              color: $navyblue;
+            }
           }
         }
         div.create-notification {
           margin-left: 10px;
           display: flex;
-          justify-content:flex-start;
+          justify-content:flex-end;
           align-items: center;
           div {
             display: inline-block;
-            // width: 100px;
+            width: 120px;
+            text-align: center;
           }
         }
       }
@@ -148,18 +174,19 @@ div.Admin {
   footer {
     div.top {
       margin-top: 0px;
-      padding: 120px 0;
+      padding: 1px 0;
       background: $darkergrey;
     }
     div.bottom {
       background: $hoverblue;
       background: #3a3a4f;
-      height: 60px;
+      background: $backgroundgrey;
+      height: 70px;
       opacity: 0.7;
     }
   }
 }
-div.new-post-modal {
+div.modal {
   max-width: 600px;
   width: 80vw;
   height: 60vh;
@@ -169,8 +196,23 @@ div.new-post-modal {
   flex-direction: column;
   padding: 0 25px 30px 25px;
   div {
-    padding: 20px 0 7px 0;
-    padding-left: 5px;
+    padding: 20px 0 7px 5px;
+  }
+  &.delete {
+    padding: 10px 45px 10px 45px;
+    h4 {
+      padding: 5px 0 10px 0;
+      text-align: center;
+      color: $brightblue;
+    }
+    div.display-post{
+      background: $backgroundgrey;
+      padding: 20px 10px;
+      h3,div {
+        margin: 0px 0;
+        padding: 8px 5px;
+      }
+    }
   }
   div.upload-post {
     display: flex;
@@ -199,12 +241,6 @@ div.new-post-modal {
       border: 2px solid $brightblue;
     }
   }
-
-  // min-width: 600px;
-  // min-height: 400px;
-  //
-  // max-width: 800px;
-  // max-height: 500px;
 }
 
 // @media only screen and (max-width: 600px) {

@@ -22,9 +22,9 @@ const stubPosts = [
 ]
 
 const initialState = {
-  posts: stubPosts,
-  // posts: [],
-  user: null
+  posts: [],
+  user: null,
+  loggedIn: false
 }
 
 export default (state=initialState, action) => {
