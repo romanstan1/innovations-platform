@@ -1,11 +1,14 @@
-import {database, messaging} from '../firebase-init'
+import {database, messaging, auth} from '../firebase-init'
+import firebase from 'firebase'
 
 // Action types
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SUCCESSFUL_UPLOAD = 'SUCCESSFUL_UPLOAD'
-export const UNSUCCESSFUL_UPLOAD = 'UNSUCCESSFUL_UPLOAD'
+export const FAILED_UPLOAD = 'FAILED_UPLOAD'
 export const DELETE_POST = 'DELETE_POST'
+export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN'
+export const FAILED_LOGIN = 'FAILED_LOGIN'
 
 // Action creators
 
@@ -19,9 +22,9 @@ export const uploadPost = (dispatch, title, description, link) => {
   }
   database.ref().update(updates, (error) => {
     if(error) {
-      console.log('UNSUCCESSFUL_UPLOAD', error)
+      console.log('FAILED_UPLOAD', error)
       dispatch({
-        type: UNSUCCESSFUL_UPLOAD
+        type: FAILED_UPLOAD
       })
     } else {
       console.log('SUCCESSFUL_UPLOAD')
@@ -39,11 +42,33 @@ export const fetchPosts = (dispatch) => {
       type: RECEIVE_POSTS,
       payload: posts? Object.values(posts) : []
     })
-  });
+  })
 }
 
+export const logIn = (dispatch, email, password) => {
+  auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() =>
+  auth.signInWithEmailAndPassword(email, password)).catch( error => {
+    console.log("Rrror signing in", error.code, error.message)
+  });
 
-
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      dispatch({
+        type: SUCCESSFUL_LOGIN,
+        payload: user
+      })
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+    } else {
+      console.log('User signed out')
+    }
+  })
+}
 
 export const toggleDisplayPost = (item) => {
   console.log('item', item)

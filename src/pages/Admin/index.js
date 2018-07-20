@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
-import {Nav, Posts, NewPost, Footer} from './modules'
+import React, { Component, Fragment} from 'react';
+import {Nav, Posts, NewPost, Footer, Login} from './modules'
 import './styles/index.css'
+import {connect} from 'react-redux'
 
-export default class Admin extends Component {
-  render() {
-    return (
-      <div className="Admin">
-        <Nav/>
+
+const Admin = ({loggedIn}) =>
+  <div className="Admin">
+    <Nav/>
+    {loggedIn?
+      <Fragment>
         <NewPost/>
         <Posts/>
         <Footer/>
-      </div>
-    );
-  }
-}
+      </Fragment>
+      :
+      <Fragment>
+        <Login/>
+      </Fragment>
+     }
+  </div>
+
+export default connect(state => ({
+  loggedIn: state.data.loggedIn,
+}))(Admin)

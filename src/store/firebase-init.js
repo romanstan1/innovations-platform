@@ -6,9 +6,31 @@ firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
 const database = firebase.database();
+const auth = firebase.auth();
 
-export {database}
-export {messaging}
+export {database, messaging, auth}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const db = firebase.database().ref('posts/');
 // db.on('value', snapshot => {

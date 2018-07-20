@@ -21,7 +21,7 @@ const ListItem = ({openDelete, item, openNotification, toggleDisplayPost}) =>
       <Switch
         checked={item.display}
         onChange={toggleDisplayPost(item)}
-        color='disable'
+        color='default'
       />
     </div>
     <div className='create-notification'>
