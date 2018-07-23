@@ -29,7 +29,6 @@ class Nav extends Component {
     logOut()
   }
 
-
   render() {
     const {loggedIn, user} = this.props
     const {anchorEl} = this.state
@@ -42,13 +41,12 @@ class Nav extends Component {
         <span className='title'>Unipro Content Platform - Admin Panel</span>
         {
           loggedIn?
-
           <span className='auth'>
             <Button
               aria-owns={anchorEl ? 'simple-menu' : null}
               aria-haspopup="true"
               onClick={this.handleOpen}
-              >
+            >
               {user.email.split("@").shift()}
             </Button>
             <UserModal
@@ -64,8 +62,6 @@ class Nav extends Component {
     )
   }
 }
-// <span className='auth'>{user.email.split("@").shift()}</span>
-
 
 export default connect(state => ({
   loggedIn: state.data.loggedIn,

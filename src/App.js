@@ -10,24 +10,23 @@ export default class App extends Component {
   componentDidMount() {
     fetchPosts(this.props.dispatch)
 
-    // if ('serviceWorker' in navigator) {
-    //   window.addEventListener('load', () => {
-    //     navigator.serviceWorker.register('sw.js').then(registration => {
-    //       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    //     }, err => {
-    //       console.log('ServiceWorker registration failed: ', err);
-    //     }).catch(err => {
-    //       console.log(err)
-    //     })
-    //   })
-    // } else {
-    //   console.log('service worker is not supported');
-    // }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(registration => {
+          console.log('ServiceWorker registration successful with scope');
+        }, err => {
+          console.log('ServiceWorker registration failed');
+        }).catch(err => {
+          console.log(err)
+        })
+      })
+    } else {
+      console.log('service worker is not supported');
+    }
 
     messaging.requestPermission()
       .then(() => messaging.getToken())
       .then(token => {
-       console.log("Persission granted for messaging. Token: ",token)
        fetch(`https://us-central1-unipro-innovation-platform.cloudfunctions.net/notification/registerDevice`,
        {
          method: "POST",
@@ -38,8 +37,8 @@ export default class App extends Component {
          body:"token=" + token + "&topic=innovation5" // the topic name is = 'innovation3'
        })
        .then(res => res.json())
-       .then(resp => console.log("Successfully registered to the specified topic using token:  ",resp))
-       .catch(error => console.log("Error with registration:  ",error))
+       .then(resp => console.log("Successfully registered for notifications"))
+       .catch(error => console.log("Error with notification registration"))
     })
 
   }

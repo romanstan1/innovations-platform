@@ -13,7 +13,7 @@ export const FAILED_LOGIN = 'FAILED_LOGIN'
 
 // Action creators
 
-export const postNotification = (title, body) => {
+export const postNotification = (title, body, link) => {
   auth.currentUser.getIdToken(true).then(idToken => {
     fetch(`https://us-central1-unipro-innovation-platform.cloudfunctions.net/notification/postNotification`,
       {
@@ -23,7 +23,7 @@ export const postNotification = (title, body) => {
           'Content-Type': 'application/x-www-form-urlencoded',
           'Authorization': 'Bearer ' + idToken
         },
-        body:"title=" + title + "&body=" + body + "&icon=https://unipro-innovation-platform.firebaseapp.com/assets/unipro-favicon-small.png"
+        body:"title=" + title + "&body=" + body + "&link=" + link + "&icon=https://unipro-innovation-platform.firebaseapp.com/assets/unipro-favicon-small.png"
       })
       .then(res => res.json())
       .catch(error => console.log("Error with posting notification : ",error))

@@ -58,8 +58,6 @@ class Login extends Component {
   }
 }
 
-
-
 export default connect(state => ({
   error: state.data.error,
   errorMessage: state.data.errorMessage
