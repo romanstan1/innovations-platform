@@ -1,8 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux'
 import {DeleteModal, NotificationModal} from './Modals'
-import {deletePost, toggleDisplayPost} from 'store/modules/actions'
+import {deletePost, toggleDisplayPost, postNotification} from 'store/modules/actions'
 import Switch from '@material-ui/core/Switch';
+
 
 const ListItem = ({openDelete, item, openNotification, toggleDisplayPost}) =>
   <li>
@@ -33,14 +34,17 @@ class Posts extends Component {
   state = {
     deleteOpen: false,
     notificationOpen: false,
-    focusedPost: {}
+    focusedPost: {},
+    title: 'This is the title in the state',
+    body: 'This is the body in the state'
   }
+
   // notification functions
   sendNotification = () => {
-    console.log('sendNotification')
+    const {title, body} = this.state
+    postNotification(title, body)
   }
   openNotification = (item) => () => {
-    console.log('open notification')
     this.setState({
     notificationOpen: true,
     focusedPost: item })

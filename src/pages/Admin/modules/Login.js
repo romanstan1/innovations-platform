@@ -2,7 +2,6 @@ import React, { Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {logIn} from 'store/modules/actions'
 
-
 class Login extends Component {
 
   state = {

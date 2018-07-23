@@ -28,14 +28,14 @@ export default class App extends Component {
       .then(() => messaging.getToken())
       .then(token => {
        console.log("Persission granted for messaging. Token: ",token)
-       fetch(`http://localhost:3000/registertopic`,
+       fetch(`https://us-central1-unipro-innovation-platform.cloudfunctions.net/notification/registerDevice`,
        {
          method: "POST",
          mode: 'cors',
          headers: {
            'Content-Type': 'application/x-www-form-urlencoded'
          },
-         body:"token=" + token + "&topic=innovation3" // the topic name is = 'innovation3'
+         body:"token=" + token + "&topic=innovation5" // the topic name is = 'innovation3'
        })
        .then(res => res.json())
        .then(resp => console.log("Successfully registered to the specified topic using token:  ",resp))
