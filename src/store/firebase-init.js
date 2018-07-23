@@ -1,6 +1,5 @@
 import config from './firebase-config.js'
 import firebase from 'firebase'
-// import {receivePosts} from 'store/modules/actions'
 
 firebase.initializeApp(config);
 
@@ -8,9 +7,7 @@ const messaging = firebase.messaging();
 const database = firebase.database();
 const auth = firebase.auth();
 
-export {database, messaging, auth}
-
-
+export {database, messaging, auth};
 
 
 
