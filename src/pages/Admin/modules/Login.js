@@ -37,6 +37,7 @@ class Login extends Component {
               value={email}
               onChange={this.handleTextInput}
               data-type='email'
+              autoComplete="on"
               type="text"
             />
             <h3>Password</h3>
@@ -44,6 +45,7 @@ class Login extends Component {
               value={password}
               onChange={this.handleTextInput}
               data-type='password'
+              autoComplete="on"
               type="password"
             />
             <div
