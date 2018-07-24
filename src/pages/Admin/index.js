@@ -3,7 +3,6 @@ import {Nav, Posts, NewPost, Footer, Login} from './modules'
 import './styles/index.css'
 import {connect} from 'react-redux'
 
-
 const Admin = ({loggedIn}) =>
   <div className="Admin">
     <Nav/>
