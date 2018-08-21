@@ -56,7 +56,7 @@ export const fetchPosts = (dispatch) => {
     const posts =  snapshot.val()
     dispatch({
       type: RECEIVE_POSTS,
-      payload: posts? Object.values(posts) : []
+      payload: posts? Object.keys(posts).map(e => posts[e]) : []
     })
   })
 }
