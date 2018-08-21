@@ -24,22 +24,24 @@ export default class App extends Component {
       console.log('service worker is not supported');
     }
 
-    messaging.requestPermission()
+    if(!!messaging) {
+      messaging.requestPermission()
       .then(() => messaging.getToken())
       .then(token => {
-       fetch(`https://us-central1-unipro-innovation-platform.cloudfunctions.net/notification/registerDevice`,
-       {
-         method: "POST",
-         mode: 'cors',
-         headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-         },
-         body:"token=" + token + "&topic=innovation5" // the topic name is = 'innovation3'
-       })
-       .then(res => res.json())
-       .then(resp => console.log("Successfully registered for notifications"))
-       .catch(error => console.log("Error with notification registration"))
-    })
+        fetch(`https://us-central1-unipro-innovation-platform.cloudfunctions.net/notification/registerDevice`,
+          {
+            method: "POST",
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body:"token=" + token + "&topic=innovation5" // the topic name is = 'innovation3'
+          })
+          .then(res => res.json())
+          .then(resp => console.log("Successfully registered for notifications"))
+          .catch(error => console.log("Error with notification registration"))
+      })
+    }
 
   }
   render() {

@@ -1,4 +1,4 @@
-import {database, messaging, auth} from '../firebase-init'
+import {database, auth} from '../firebase-init'
 import firebase from 'firebase'
 
 // Action types

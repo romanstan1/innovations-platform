@@ -61,9 +61,9 @@ class Posts extends Component {
               <h3 className='notifications'>Notifications</h3>
             </li>
             {
-              posts.map(item =>
+              posts.map((item, i) =>
                 <ListItem
-                  key={item.title}
+                  key={item.title + i}
                   item={item}
                   openNotification={this.openNotification}
                   openDelete={this.openDelete}

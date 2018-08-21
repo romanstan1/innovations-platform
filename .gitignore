@@ -19,7 +19,7 @@
 *.css
 .css
 
-firebase-config.js*
+#firebase-config.js*
 
 npm-debug.log*
 yarn-debug.log*

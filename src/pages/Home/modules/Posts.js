@@ -28,7 +28,7 @@ const Posts = ({posts}) =>
 <div className='Posts'>
   <ul>
     {
-      posts.filter(item => item.display).map(item => <ListItem key={item.title} item={item}/>)
+      posts.filter(item => item.display).map((item, i) => <ListItem key={item.title + i} item={item}/>)
     }
   </ul>
 </div>

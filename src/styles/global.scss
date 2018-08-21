@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Biryani:900|Roboto');
 @import "src/styles/_variables";
 
 * {
@@ -11,11 +11,11 @@ a {
 }
 
 body {
-  background: $backgroundgrey;
+  background: $homebackground;
   color: $navyblue;
   margin: 0;
   padding: 0;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
